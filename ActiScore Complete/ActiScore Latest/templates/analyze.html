@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">New Analysis</h1>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-face-smile fa-4x mb-3 text-primary"></i>
+                <h3 class="card-title">Facial Emotion Recognition</h3>
+                <p class="card-text">
+                    Detect emotions from facial expressions using advanced computer vision.
+                </p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#analysisModal" data-type="FER">
+                    Start FER Analysis
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-microphone fa-4x mb-3 text-primary"></i>
+                <h3 class="card-title">Speech Emotion Recognition</h3>
+                <p class="card-text">
+                    Analyze emotions in speech using audio processing algorithms.
+                </p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#analysisModal" data-type="SER">
+                    Start SER Analysis
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-brain fa-4x mb-3 text-primary"></i>
+                <h3 class="card-title">Multimodal Fusion</h3>
+                <p class="card-text">
+                    Combine facial and speech analysis for comprehensive emotion detection.
+                </p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#analysisModal" data-type="Fusion">
+                    Start Fusion Analysis
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Analysis Modal -->
+<div class="modal fade" id="analysisModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">New Analysis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{{ url_for('analyze') }}" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" name="analysis_type" id="analysis_type">
+                    
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Analysis Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description (Optional)</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Input Method</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="input_method" id="input_file" value="file" checked>
+                            <label class="form-check-label" for="input_file">
+                                Upload File
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="input_method" id="input_realtime" value="realtime">
+                            <label class="form-check-label" for="input_realtime">
+                                Real-time Capture
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="file_upload_section" class="mb-3">
+                        <label for="file" class="form-label">Upload File</label>
+                        <input class="form-control" type="file" id="file" name="file">
+                        <div class="form-text" id="file_help_text">
+                            Supported formats: MP4, AVI, WAV, MP3
+                        </div>
+                    </div>
+                    
+                    <div id="realtime_section" class="mb-3 d-none">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Real-time analysis will use your webcam and/or microphone when you proceed.
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Start Analysis</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set analysis type in modal
+        const analysisModal = document.getElementById('analysisModal');
+        analysisModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            const analysisType = button.getAttribute('data-type');
+            const modalTitle = document.getElementById('modalTitle');
+            const analysisTypeInput = document.getElementById('analysis_type');
+            const fileHelpText = document.getElementById('file_help_text');
+            
+            analysisTypeInput.value = analysisType;
+            
+            if (analysisType === 'FER') {
+                modalTitle.textContent = 'New Facial Emotion Analysis';
+                fileHelpText.textContent = 'Supported formats: MP4, AVI, JPG, PNG';
+            } else if (analysisType === 'SER') {
+                modalTitle.textContent = 'New Speech Emotion Analysis';
+                fileHelpText.textContent = 'Supported formats: WAV, MP3, OGG';
+            } else {
+                modalTitle.textContent = 'New Multimodal Fusion Analysis';
+                fileHelpText.textContent = 'Supported formats: MP4, AVI';
+            }
+        });
+        
+        // Toggle file upload / real-time sections
+        const inputMethodRadios = document.querySelectorAll('input[name="input_method"]');
+        const fileUploadSection = document.getElementById('file_upload_section');
+        const realtimeSection = document.getElementById('realtime_section');
+        
+        inputMethodRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'file') {
+                    fileUploadSection.classList.remove('d-none');
+                    realtimeSection.classList.add('d-none');
+                } else {
+                    fileUploadSection.classList.add('d-none');
+                    realtimeSection.classList.remove('d-none');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">Analytics Dashboard</h2>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="card stat-card">
+        <div class="stat-number">{{ stats.total_students }}</div>
+        <div class="stat-label">Total Students</div>
+    </div>
+    <div class="card stat-card">
+        <div class="stat-number">{{ stats.present_today }}</div>
+        <div class="stat-label">Present Today</div>
+    </div>
+    <div class="card stat-card">
+        <div class="stat-number">{{ stats.attendance_rate }}%</div>
+        <div class="stat-label">Attendance Rate</div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>Attendance Trend (Last 7 Days)</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Emotion Distribution</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="emotionChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Recent Attendance Records</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Time</th>
+                                <th>Emotion</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendance-table">
+                            {% for record in recent_attendance %}
+                            <tr>
+                                <td>{{ record.student_id }}</td>
+                                <td>{{ record.name }}</td>
+                                <td>{{ record.timestamp }}</td>
+                                <td>
+                                    <span class="badge {{ 'bg-success' if record.emotion == 'happy' else 'bg-primary' if record.emotion == 'neutral' else 'bg-warning' if record.emotion == 'surprise' else 'bg-secondary' if record.emotion == 'sad' else 'bg-danger' if record.emotion == 'angry' else 'bg-info' }}">
+                                        {{ record.emotion }}
+                                    </span>
+                                </td>
+                                <td>{{ "%.1f"|format(record.confidence * 100) }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search History - AI Research Paper Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Search History</h1>
+            <p>View your previous searches and analyses</p>
+        </div>
+
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('history') }}" class="nav-link active">Search History</a>
+            </div>
+        </nav>
+
+        {% if history %}
+            <div class="card">
+                <h2>Recent Searches</h2>
+                {% for entry in history %}
+                <div class="history-item">
+                    <div class="history-meta">
+                        <strong>Date:</strong> {{ entry.timestamp }} | 
+                        <strong>Type:</strong> {{ entry.input_type }}
+                    </div>
+                    
+                    {% if entry.summary %}
+                    <div class="result-item">
+                        <h3>Summary</h3>
+                        <p>{{ entry.summary[:200] }}...</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if entry.keywords %}
+                    <div class="result-item">
+                        <h3>Keywords</h3>
+                        <p>{{ entry.keywords }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if entry.similar_papers %}
+                    <div class="result-item">
+                        <h3>Similar Papers Found</h3>
+                        <p>{{ entry.similar_papers|length }} papers recommended</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if entry.recommended_papers %}
+                    <div class="result-item">
+                        <h3>Recommended Papers</h3>
+                        <p>{{ entry.recommended_papers|length }} papers found</p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card">
+                <h2>No Search History</h2>
+                <p>You haven't performed any searches yet. Go to the home page to get started!</p>
+                <a href="{{ url_for('index') }}" class="btn">Start Analyzing</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Tablet Styles */
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container, #three-d-scene {
+        height: 300px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 0;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    main {
+        padding: 1rem 0;
+    }
+    
+    section {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    .probability-display {
+        font-size: 2rem;
+    }
+    
+    .chart-container, #three-d-scene {
+        height: 250px;
+    }
+    
+    .three-d-controls {
+        flex-direction: column;
+    }
+    
+    .three-d-controls button {
+        width: 100%;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .probability-display {
+        font-size: 1.8rem;
+    }
+    
+    .chart-container, #three-d-scene {
+        height: 200px;
+    }
+}

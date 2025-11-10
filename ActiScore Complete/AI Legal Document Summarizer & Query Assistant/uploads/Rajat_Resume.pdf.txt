@@ -1,0 +1,70 @@
+RAJAT KUMAR
+♂¶ap-¶arker-altKaithal, Haryana
+/envel⌢perajatgopera16@gmail.com
+♂phone-alt+91-8168543103
+/linkedin-inRajat
+/githubRajat
+SUMMARY
+Passionate AI and Machine Learning specialist with strong problem-solving skills and enthusiasm for
+developing innovative, scalable solutions. Skilled in designing and implementing intelligent systems that
+address complex challenges. Committed to continuous learning and applying cutting-edge technologies
+to create impactful applications. Certified in critical analysis and database design with demonstrated
+ability to transform ideas into practical implementations.
+EDUCATION
+Chandigarh Group of College, Jhanjeri, Punjab
+B.Tech in Artificial Intelligence & Machine Learning — CGPA: 8.709/2022-Present
+◦Relevant Coursework:Data Structures, Cloud Computing, NLP, Distributed Systems
+Shiv Shiksha Niketan Sr Sec School, Sanghan
+Senior Secondary (Non-Medical) — 96.6%2021
+Shiv Shiksha Niketan Sr Sec School, Sanghan
+Secondary Education — 86.8%2019
+PROJECTS
+AI-Powered Career Advisor (Python/Flask) 2023
+◦NLP system providing personalized career recommendations with 85% accuracy
+◦Integrated LinkedIn API for real-time skill gap analysis
+Weather Forecasting System (React/OpenWeatherAPI)2023
+◦Real-time weather predictions for 200+ cities
+◦Reduced API response time by 35%
+NLP Customer Support Chatbot (TensorFlow)2024
+◦Achieved 91% accuracy in query resolution
+◦Handled 500+ daily queries with sentiment analysis
+Smart Finance Tracker (Python/Django)2023
+◦Budget prediction system with 88% accuracy
+◦Integrated SMS alerts for expense thresholds
+MARS Rover Control System (C++/Bluetooth)2022
+◦Designed low-latency communication protocol (98% efficiency)
+◦Implemented obstacle avoidance algorithms using sensor fusion
+INTERNSHIPS
+ACMEGRADE — AI Research Trainee 07/2024-08/2024
+◦Developed NLP models for sentiment analysis with 92% accuracy
+◦Automated data pipelines using Python, reducing processing time by 40%
+◦Collaborated on AI-powered recommendation systems
+IIT Kanpur — Full Stack Developer Trainee 06/2024-07/2024
+◦Developed 5+ web applications using MERN stack, improving user engagement by 40%
+◦Integrated Payment Gateway and Google Maps APIs, reducing checkout time by 25%
+SKILLS
+Programming Languages
+◦Python, Java, C, C++, SQL
+Web Technologies
+◦Frontend:React, HTML5, CSS3, AJAX, Chart.js
+◦Backend:Node.js, Express, Flask, Django, JavaScript (ES6+)
+Databases
+◦MongoDB, Oracle, SQL Server
+Tools & Platforms
+◦AWS EC2, Git, Postman, TensorFlow, Tableau
+Concepts
+◦REST APIs, CI/CD, Agile Development, Data Modeling, Machine Learning
+Soft Skills
+◦Problem Solving & Critical Thinking
+◦Team Collaboration & Leadership
+◦Effective Communication
+◦Time Management
+◦Adaptability to New Technologies
+CERTIFICATIONS
+◦MERN Stack Developer - IIT Kanpur 2024
+◦HP Life: Data Science & Analytics 2024
+◦MongoDB University: Introduction to MongoDB 2023
+◦ACMEGRADE: Artificial Intelligence 2024
+ACHIEVEMENTS
+◦Smart India Hackathon - Developed App for direct market access for Farmers 2024
+◦HackerRank Python (3-Star) 2024

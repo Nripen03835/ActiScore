@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Startup Success Predictor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/results.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AI Startup Success Predictor</h1>
+            <p>Predict your startup's success probability with machine learning</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="input-section">
+            <h2>Enter Startup Details</h2>
+            <form id="startup-form">
+                <div class="form-group">
+                    <label for="industry">Industry</label>
+                    <select id="industry" required>
+                        <option value="">Select Industry</option>
+                        <option value="tech">Technology</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="finance">Finance</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="education">Education</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="funding">Funding Amount (USD)</label>
+                    <input type="number" id="funding" min="0" step="1000" placeholder="e.g., 500000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Founder Experience (years)</label>
+                    <input type="number" id="experience" min="0" max="50" step="1" placeholder="e.g., 5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="team-size">Team Size</label>
+                    <input type="number" id="team-size" min="1" max="100" step="1" placeholder="e.g., 10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="market-size">Market Size (Scale 1-10)</label>
+                    <input type="range" id="market-size" min="1" max="10" value="5">
+                    <span id="market-size-value">5</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="competition">Competition Level (Scale 1-10)</label>
+                    <input type="range" id="competition" min="1" max="10" value="5">
+                    <span id="competition-value">5</span>
+                </div>
+
+                <button type="submit" id="predict-btn">Predict Success</button>
+            </form>
+        </section>
+        <section class="results-section" id="results">
+            <h2>Prediction Results</h2>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>Success Probability</h3>
+                    <div class="probability-display">
+                        <span id="probability-value">0%</span>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Risk Level</h3>
+                    <div class="risk-display">
+                        <span id="risk-level">Low</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights">
+                <h3>Key Insights</h3>
+                <ul id="insights-list">
+                    <!-- Insights will be populated here -->
+                </ul>
+            </div>
+        </section>
+        </section>
+
+        <section class="visualization-section">
+            <h2>Performance Visualization</h2>
+            
+            <div class="chart-container">
+                <canvas id="trend-chart"></canvas>
+            </div>
+
+            <div class="three-d-container">
+                <h3>3D Financial Forecast</h3>
+                <div id="three-d-scene"></div>
+                <div class="three-d-controls">
+                    <button id="rotate-btn">Rotate</button>
+                    <button id="reset-view-btn">Reset View</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 AI Startup Success Predictor. Powered by XGBoost/RandomForest ML models.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/three-d.js"></script>
+</body>
+</html>

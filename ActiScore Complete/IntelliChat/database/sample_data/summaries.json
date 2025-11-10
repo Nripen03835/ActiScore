@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Quarterly Business Review",
+    "content": "The company showed strong growth in Q3 with a 15% increase in revenue and 20% growth in user base.",
+    "category": "Business",
+    "created_at": "2025-11-09"
+  },
+  {
+    "title": "Team Performance Analysis",
+    "content": "Development team achieved 95% of sprint goals with improved code quality metrics.",
+    "category": "Performance",
+    "created_at": "2025-11-02"
+  }
+]

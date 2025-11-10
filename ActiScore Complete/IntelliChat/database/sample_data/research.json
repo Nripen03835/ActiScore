@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Advanced Machine Learning Techniques",
+    "authors": [
+      "Dr. Smith",
+      "Dr. Johnson"
+    ],
+    "abstract": "This paper explores novel approaches to deep learning optimization...",
+    "keywords": [
+      "machine learning",
+      "deep learning",
+      "optimization"
+    ],
+    "published_date": "2023-10-15"
+  },
+  {
+    "title": "Blockchain in Supply Chain Management",
+    "authors": [
+      "Prof. Wilson",
+      "Dr. Brown"
+    ],
+    "abstract": "Research on implementing blockchain technology for transparent supply chains...",
+    "keywords": [
+      "blockchain",
+      "supply chain",
+      "transparency"
+    ],
+    "published_date": "2023-09-20"
+  }
+]

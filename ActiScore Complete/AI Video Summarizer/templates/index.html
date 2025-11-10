@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Video Summarizer</h1>
+            <p>Upload lecture or meeting videos to get AI-generated summaries</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="upload-icon">📁</i>
+                        <h3>Drag & Drop your video/audio file here</h3>
+                        <p>or</p>
+                        <button class="btn-primary" id="browseBtn">Browse Files</button>
+                        <input type="file" id="fileInput" accept=".mp4,.avi,.mov,.mkv,.webm,.flv,.wmv,.mp3,.wav,.m4a,.ogg" hidden>
+                        <p class="file-types">Supported formats: MP4, AVI, MOV, MKV, WEBM, FLV, WMV, MP3, WAV, M4A, OGG</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">Processing your file...</p>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-container">
+                    <div class="result-card">
+                        <h3>Transcription</h3>
+                        <div class="result-content" id="transcriptionContent">
+                            <p id="transcriptionText"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Summary</h3>
+                        <div class="result-content" id="summaryContent">
+                            <p id="summaryText"></p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-secondary" id="downloadBtn">Download PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-message">
+                    <i class="error-icon">⚠️</i>
+                    <h3 id="errorTitle">Error</h3>
+                    <p id="errorText"></p>
+                    <button class="btn-primary" id="retryBtn">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Whisper AI & Flask</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

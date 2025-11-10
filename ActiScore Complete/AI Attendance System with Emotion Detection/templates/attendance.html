@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Today's Attendance</h2>
+            <button class="btn btn-primary" onclick="loadAttendanceData()">
+                Refresh
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Attendance Records for {{ today_date }}</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Emotion</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody id="attendance-table">
+                    {% for record in attendance_data %}
+                    <tr>
+                        <td>{{ record.student_id }}</td>
+                        <td>{{ record.name }}</td>
+                        <td>{{ record.timestamp }}</td>
+                        <td>
+                            <span class="badge {{ 'bg-success' if record.emotion == 'happy' else 'bg-primary' if record.emotion == 'neutral' else 'bg-warning' if record.emotion == 'surprise' else 'bg-secondary' if record.emotion == 'sad' else 'bg-danger' if record.emotion == 'angry' else 'bg-info' }}">
+                                {{ record.emotion }}
+                            </span>
+                        </td>
+                        <td>{{ "%.1f"|format(record.confidence * 100) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% if not attendance_data %}
+        <div class="text-center py-4">
+            <p class="text-muted">No attendance records for today yet.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

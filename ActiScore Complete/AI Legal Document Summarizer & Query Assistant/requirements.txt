@@ -1,0 +1,11 @@
+flask
+transformers
+torch
+sentence-transformers
+faiss-cpu
+pillow
+pytesseract
+pdf2image
+python-multipart
+reportlab
+numpy

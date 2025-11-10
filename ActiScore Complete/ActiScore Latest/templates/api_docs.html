@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}API Documentation - ActiScore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">ActiScore API Documentation</h1>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Overview</h2>
+        </div>
+        <div class="card-body">
+            <p>
+                The ActiScore API provides programmatic access to emotion analysis functionality.
+                You can analyze videos for facial emotions, audio for speech emotions, or both for multimodal analysis.
+            </p>
+            <p>
+                All API endpoints require authentication. You can authenticate using your ActiScore account credentials.
+            </p>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Endpoints</h2>
+        </div>
+        <div class="card-body">
+            <h3 class="h6">Video Analysis</h3>
+            <pre><code>POST /api/v1/analyze/video
+Content-Type: multipart/form-data
+
+file: [video file]</code></pre>
+            
+            <h3 class="h6 mt-4">Audio Analysis</h3>
+            <pre><code>POST /api/v1/analyze/audio
+Content-Type: multipart/form-data
+
+file: [audio file]</code></pre>
+            
+            <h3 class="h6 mt-4">Multimodal Analysis</h3>
+            <pre><code>POST /api/v1/analyze/fusion
+Content-Type: multipart/form-data
+
+video: [video file]
+audio: [audio file]</code></pre>
+            
+            <h3 class="h6 mt-4">Get User's Analyses</h3>
+            <pre><code>GET /api/v1/analyses</code></pre>
+            
+            <h3 class="h6 mt-4">Get Analysis Details</h3>
+            <pre><code>GET /api/v1/analyses/{id}</code></pre>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="h5 mb-0">Response Format</h2>
+        </div>
+        <div class="card-body">
+            <p>All API responses are in JSON format and include a <code>success</code> field indicating whether the request was successful.</p>
+            
+            <h3 class="h6">Example Response</h3>
+            <pre><code>{
+  "success": true,
+  "analysis_id": 123,
+  "results": {
+    "emotions": {
+      "happy": 0.7,
+      "sad": 0.05,
+      "angry": 0.1,
+      "surprised": 0.1,
+      "neutral": 0.05
+    }
+  }
+}</code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

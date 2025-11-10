@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Dashboard</h1>
+    <a href="{{ url_for('analyze') }}" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>New Analysis
+    </a>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4 mb-3">
+        <div class="card bg-primary text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Total Analyses</h5>
+                        <h2 class="mb-0">{{ analyses|length }}</h2>
+                    </div>
+                    <i class="fas fa-chart-bar fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card bg-success text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Facial Analyses</h5>
+                        <h2 class="mb-0">{{ analyses|selectattr('analysis_type', 'equalto', 'FER')|list|length }}</h2>
+                    </div>
+                    <i class="fas fa-face-smile fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card bg-info text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Speech Analyses</h5>
+                        <h2 class="mb-0">{{ analyses|selectattr('analysis_type', 'equalto', 'SER')|list|length }}</h2>
+                    </div>
+                    <i class="fas fa-microphone fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Recent Analyses</h5>
+    </div>
+    <div class="card-body">
+        {% if analyses %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for analysis in analyses %}
+                    <tr>
+                        <td>{{ analysis.title }}</td>
+                        <td>
+                            {% if analysis.analysis_type == 'FER' %}
+                            <span class="badge bg-success">Facial</span>
+                            {% elif analysis.analysis_type == 'SER' %}
+                            <span class="badge bg-info">Speech</span>
+                            {% else %}
+                            <span class="badge bg-primary">Fusion</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ analysis.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>
+                            {% if analysis.analysis_type == 'FER' %}
+                            <a href="{{ url_for('facial_analysis', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                            {% elif analysis.analysis_type == 'SER' %}
+                            <a href="{{ url_for('speech_analysis', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                            {% else %}
+                            <a href="{{ url_for('fusion_analysis', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                            {% endif %}
+                            <!-- Add this to the actions column in the analyses table -->
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="shareDropdown{{ analysis.id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="shareDropdown{{ analysis.id }}">
+                                    {% for team in teams %}
+                                    <li>
+                                        <form action="{{ url_for('collaboration.share_analysis', analysis_id=analysis.id) }}" method="POST" class="dropdown-item-form">
+                                            <input type="hidden" name="team_id" value="{{ team.id }}">
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="fas fa-users me-2"></i>{{ team.name }}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    {% endfor %}
+                                    {% if not teams %}
+                                    <li><span class="dropdown-item disabled">No teams available</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4">
+            <i class="fas fa-chart-bar fa-4x text-muted mb-3"></i>
+            <p class="lead">You haven't performed any analyses yet.</p>
+            <a href="{{ url_for('analyze') }}" class="btn btn-primary">Start Your First Analysis</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">Emotion Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="emotionChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">Analysis Timeline</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Sample data for charts
+    document.addEventListener('DOMContentLoaded', function() {
+        // Emotion Distribution Chart
+        const emotionCtx = document.getElementById('emotionChart').getContext('2d');
+        const emotionChart = new Chart(emotionCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Happy', 'Sad', 'Angry', 'Surprised', 'Neutral', 'Fear', 'Disgust'],
+                datasets: [{
+                    data: [30, 15, 10, 20, 15, 5, 5],
+                    backgroundColor: [
+                        '#4CAF50', '#2196F3', '#F44336', '#FFC107', '#9E9E9E', '#673AB7', '#FF5722'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+
+        // Timeline Chart
+        const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+        const timelineChart = new Chart(timelineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Facial Analyses',
+                    data: [5, 8, 12, 7, 10, 15],
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    tension: 0.4
+                }, {
+                    label: 'Speech Analyses',
+                    data: [3, 5, 8, 10, 7, 12],
+                    borderColor: '#2196F3',
+                    backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Create Team - ActiScore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('collaboration.teams') }}">Teams</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create Team</li>
+        </ol>
+    </nav>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5 class="mb-0">Create a New Team</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('collaboration.create_team') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="team_name" class="form-label">Team Name</label>
+                            <input type="text" class="form-control" id="team_name" name="team_name" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Create Team</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

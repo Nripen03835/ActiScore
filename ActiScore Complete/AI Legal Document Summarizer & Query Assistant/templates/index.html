@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Legal Document Summarizer & Query Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 AI Legal Document Assistant</h1>
+            <p>Upload, summarize, and query legal documents with AI-powered precision</p>
+        </header>
+
+        <div class="app-container">
+            <!-- File Upload Section -->
+            <div class="card">
+                <h2>📁 Upload Legal Document</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📄</div>
+                    <h3>Drop your file here or click to browse</h3>
+                    <p>Supported formats: .txt, .pdf, .png, .jpg, .jpeg</p>
+                    <input type="file" id="fileInput" class="file-input" accept=".txt,.pdf,.png,.jpg,.jpeg">
+                </div>
+                
+                <div class="loading" id="uploadLoading">
+                    <div class="spinner"></div>
+                    <p>Processing document...</p>
+                </div>
+                
+                <div class="alert alert-error" id="uploadError" style="display: none;"></div>
+                <div class="alert alert-success" id="uploadSuccess" style="display: none;"></div>
+                
+                <div id="fileInfo" class="file-info" style="display: none;"></div>
+                
+                <!-- Upload Section Action Buttons -->
+                <div class="action-buttons" id="uploadActionButtons" style="display: none; margin-top: 20px;">
+                    <button id="generateSummaryBtn" class="btn">
+                        🤖 Generate Summary
+                    </button>
+                    <button id="downloadUploadSummaryBtn" class="btn btn-success" style="display: none;">
+                        📥 Download Summary
+                    </button>
+                </div>
+                
+                <div class="loading" id="generateSummaryLoading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating summary from uploaded document...</p>
+                </div>
+                
+                <div id="uploadSummaryResult" style="display: none;"></div>
+            </div>
+            <!-- Add this in the Upload Legal Document section, after the action buttons -->
+            <div class="form-group" style="margin-top: 15px;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="fastSummaryToggle" checked style="margin-right: 8px;">
+                    <span>Enable fast summarization (recommended for large documents)</span>
+                </label>
+                <small style="color: #666; display: block; margin-top: 5px;">
+                    Fast mode uses extractive summarization for immediate results. Uncheck for detailed AI-powered summarization.
+                </small>
+            </div>
+            <!-- Text Summarization Section -->
+            <div class="card">
+                <h2>✍️ Summarize Legal Text</h2>
+                <form id="summarizeForm">
+                    <div class="form-group">
+                        <label for="textToSummarize">Enter legal text to summarize:</label>
+                        <textarea 
+                            id="textToSummarize" 
+                            class="form-control textarea" 
+                            placeholder="Paste your legal document text here..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn">Generate Summary</button>
+                </form>
+                
+                <div class="loading" id="summarizeLoading">
+                    <div class="spinner"></div>
+                    <p>Generating summary using AI...</p>
+                </div>
+                
+                <div class="alert alert-error" id="summarizeError" style="display: none;"></div>
+                
+                <div id="summaryResult" style="display: none;"></div>
+                
+                <div class="action-buttons">
+                    <button id="downloadBtn" class="btn btn-success" style="display: none;">
+                        📥 Download Summary as PDF
+                    </button>
+                </div>
+            </div>
+
+            <!-- Legal Query Section -->
+            <div class="card">
+                <h2>🔍 Legal Query Assistant</h2>
+                <form id="queryForm">
+                    <div class="form-group">
+                        <label for="legalQuery">Ask a legal question:</label>
+                        <input 
+                            type="text" 
+                            id="legalQuery" 
+                            class="form-control" 
+                            placeholder="e.g., What are the requirements for a valid contract?"
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-warning">Search Documents</button>
+                </form>
+                
+                <div class="loading" id="queryLoading">
+                    <div class="spinner"></div>
+                    <p>Searching through documents...</p>
+                </div>
+                
+                <div class="alert alert-error" id="queryError" style="display: none;"></div>
+                
+                <div id="queryResults"></div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="card">
+                <h2>🚀 Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI Summarization</h3>
+                        <p>Uses HuggingFace Transformers (BART) for accurate legal document summarization</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Semantic Search</h3>
+                        <p>Sentence-BERT + FAISS for context-aware legal query responses</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📄</div>
+                        <h3>Multi-Format</h3>
+                        <p>Supports TXT, PDF, and image files with OCR capability</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h3>Fully Responsive</h3>
+                        <p>Works perfectly on desktop, tablet, and mobile devices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

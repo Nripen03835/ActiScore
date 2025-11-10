@@ -1,0 +1,68 @@
+Nripen Kumar
+♂¶ap-¶arker-altChandigarh
+/envel⌢peraonripen03835@gmail.com
+♂phone-alt+91-9649837537
+/linkedin-innripen03835
+/githubNripen03835
+Summary
+AI/ML Enthusiast passionate in developing scalable, distributed systems and intelligent applications. Experienced in Python,
+JavaScript, SQL, and working within Unix/Linux environments. Proficient in machine learning, NLP, and data analytics
+using frameworks like TensorFlow and PyTorch. Adept at software design, algorithms, and cloud platforms such as Google
+Cloud. Passionate about building impactful solutions through data-driven decision-making and collaborative engineering.
+Eucation
+CGC University, Mohali
+B.Tech in AIML2023 – 2026
+◦CGPA: 8.4/10.0
+DAV College, Sri Ganganagar
+B.Sc in Non-Medical2020 – 2023
+◦Percentage: 63.94%
+Senior Secondary School-Army Public School
+12th in Non-Medical2020
+◦Percentage in 12th: 76.4%
+Secondary School-Army Public School 2018
+◦Percentage in 10th: 73.8%
+Projects
+Virtual Career Advisor
+◦Built an AI-powered career guidance tool using NLP and predictive analytics
+◦Reduced query processing time by 20% through workflow optimization
+◦Integrated multiple payment options including UPI, cards, and wallets
+Handwritten Digit Recognition (MNIST)
+◦Developed a mobile-friendly web app with real-time prediction using HTML5 Canvas
+◦Built a CNN model in PyTorch achieving 98.8% accuracy on MNIST for digit classification
+◦Visualized model performance through accuracy metrics (train: 99.2%, val: 98.8%, test: 98.5%)
+Medical Cost Personal Datasets EDA
+◦Conducted exploratory data analysis on healthcare cost datasets
+◦Improved prediction accuracy by 15% using Python and SQL
+◦Created interactive dashboards with PowerBI and Tableau for business insights
+Internships
+Tamizhan Skills,RISE Internship Program June 2025 – July 2025
+Machine Learnimg & AI Domain:
+◦Built ML/AI models for Spam Detection, Digit Recognition, Loan Prediction, and Stock Forecasting
+UI/UX Design Domain:
+◦Designed web and mobile apps(Portfolio, Banking, E-learning), Real Estate and Job Portal platforms
+Web Development Domain:
+◦Created responsive websites and apps: Portfolio, Landing Page, To-Do list, and E-Commerce
+Wayspire Edtech Pvt Ltd,Machine Learning Intern Aug 2024 – Oct 2024
+◦Developed AI-driven automation solutions for compliance monitoring using supervised and unsupervised learning
+◦Applied SVM, linear regression, and data compression techniques to optimize efficiency
+◦Designed and optimized models with Python, SQL, TensorFlow, improving scalability and performance by 30%
+Maangler,Python Programming Intern April 2024 – Aug 2024
+◦Designed AI dashboards for marketing analytics and user engagement
+◦Improved software performance by debugging and optimizing test scripts
+◦Developed predictive models that increased user engagement by 20%
+Technical Skills and Tools
+Programming Concepts:Data Structures and Algorithms, Scalable System Design, Object-Oriented Programming (OOP)
+Programming Languages:Python, C++, C, Java, SQL, R, HTML, CSS, JavaScript
+Machine Learning and AI:TensorFlow, PyTorch, NLP, Scikit-Learn, Customer-Centric AI Solutions, AI-driven automation
+Web Technologies & Tools:HTML, CSS, JavaScript, API Development, Tableau, Hadoop, VS Code, PowerBI
+Database Management:MySQL, MongoDB, Data Query Optimization
+Cloud Computing & Version Control:Google Cloud, AWS, Azure, Git, GitHub
+Soft Skills and Abilities
+•Analytical Thinking & Problem-Solving Approach•Team Coordination & Delegation•Leadership & Impactful Innovation
+Certifications
+•Training and Internship in Machine Learning with Wayspire
+•Training and Internship in Python with Maangler
+•Data Structures And Algorithms Using C++ with Google: Developer Student Clubs & Amazon: AWS Community Builders
+•Machine Learning and Image Processing with NASSCOM
+•Principles of Generative AI & Artificial Intelligence Primer with Infosys
+•PowerBI Workshop with OfficeMaster

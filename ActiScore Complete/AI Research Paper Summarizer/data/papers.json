@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Integrating artificial intelligence and quantum computing: A systematic literature review of features and applications",
+        "authors": "Pineda V.G.",
+        "journal": "International Journal of Cognitive Computing in Engineering",
+        "year": "2026",
+        "doi": "10.1016/j.ijcce.2025.08.002",
+        "abstract": "This paper presents a comprehensive systematic literature review on the integration of artificial intelligence and quantum computing, exploring their combined features and applications across various domains.",
+        "keywords": ["artificial intelligence", "quantum computing", "systematic review", "machine learning"]
+    },
+    {
+        "title": "Artificial Intelligence Applications in Musculoskeletal Imaging",
+        "authors": "Shariatnia M.M.",
+        "journal": "Current Reviews in Musculoskeletal Medicine",
+        "year": "2026",
+        "doi": "10.1007/s12178-025-09997-0",
+        "abstract": "This review explores the latest applications of artificial intelligence in musculoskeletal imaging, focusing on diagnostic accuracy, treatment planning, and clinical outcomes.",
+        "keywords": ["artificial intelligence", "musculoskeletal imaging", "medical imaging", "diagnostics"]
+    },
+    {
+        "title": "Deep Learning-Assisted Organogel Pressure Sensor for Alphabet Recognition and Bio-Mechanical Motion Monitoring",
+        "authors": "Sharma K.",
+        "journal": "Nano Micro Letters",
+        "year": "2026",
+        "doi": "10.1007/s40820-025-01912-z",
+        "abstract": "We present a deep learning-assisted organogel pressure sensor capable of alphabet recognition and bio-mechanical motion monitoring with high accuracy and real-time performance.",
+        "keywords": ["deep learning", "sensors", "organogel", "motion monitoring", "alphabet recognition"]
+    },
+    {
+        "title": "MpoxNet: Leveraging hybrid deep learning for enhanced monkeypox diagnosis and risk identification",
+        "authors": "Nath T.D.",
+        "journal": "International Journal of Cognitive Computing in Engineering",
+        "year": "2026",
+        "doi": "10.1016/j.ijcce.2025.09.001",
+        "abstract": "MpoxNet introduces a hybrid deep learning framework for improved monkeypox diagnosis and risk identification, combining computer vision and clinical data analysis.",
+        "keywords": ["deep learning", "medical diagnosis", "monkeypox", "computer vision", "healthcare"]
+    },
+    {
+        "title": "Development of a feature vector for accurate breast cancer detection in mammographic images",
+        "authors": "Ismailova A.",
+        "journal": "International Journal of Cognitive Computing in Engineering",
+        "year": "2026",
+        "doi": "10.1016/j.ijcce.2025.08.001",
+        "abstract": "This research develops a novel feature vector approach for accurate breast cancer detection in mammographic images using advanced machine learning techniques.",
+        "keywords": ["feature vector", "breast cancer", "mammography", "machine learning", "medical imaging"]
+    },
+    {
+        "title": "Transforming legal texts into computational logic: Enhancing next generation public sector automation through explainable AI decision support",
+        "authors": "Bertl M.",
+        "journal": "International Journal of Cognitive Computing in Engineering",
+        "year": "2026",
+        "doi": "10.1016/j.ijcce.2025.07.003",
+        "abstract": "This paper presents a framework for transforming legal texts into computational logic using explainable AI for public sector automation and decision support systems.",
+        "keywords": ["legal texts", "computational logic", "explainable AI", "public sector", "automation"]
+    },
+    {
+        "title": "A DistilBERT-based hierarchical text classification for traffic analysis",
+        "authors": "Minh Q.T.",
+        "journal": "International Journal of Cognitive Computing in Engineering",
+        "year": "2026",
+        "doi": "10.1016/j.ijcce.2025.10.008",
+        "abstract": "We propose a DistilBERT-based hierarchical text classification system for traffic analysis, achieving high accuracy with reduced computational requirements.",
+        "keywords": ["DistilBERT", "text classification", "traffic analysis", "natural language processing"]
+    },
+    {
+        "title": "Multi-head Spectral-attentive Residual Generative Adversarial Network: A High-fidelity Generative Adversarial Network Based Model for Image Haze Removal",
+        "authors": "Dey A.",
+        "journal": "International Journal of Engineering Transactions B Applications",
+        "year": "2026",
+        "doi": "10.5829/ije.2026.39.08b.03",
+        "abstract": "This paper introduces a multi-head spectral-attentive residual generative adversarial network for high-fidelity image haze removal with superior performance compared to existing methods.",
+        "keywords": ["generative adversarial networks", "image processing", "haze removal", "computer vision"]
+    },
+    {
+        "title": "Deep learning-assisted tactile sensing platform for efficient object classification and password recognition",
+        "authors": "Liu S.",
+        "journal": "Journal of Materials Science and Technology",
+        "year": "2026",
+        "doi": "10.1016/j.jmst.2025.10.021",
+        "abstract": "We develop a deep learning-assisted tactile sensing platform capable of efficient object classification and password recognition with high accuracy rates.",
+        "keywords": ["deep learning", "tactile sensing", "object classification", "password recognition"]
+    },
+    {
+        "title": "Examining the Sustainable Integration of Artificial Intelligence in Human Resource Digitalization in the Context of Industry 4.0",
+        "authors": "Thomas S.",
+        "journal": "European Public and Social Innovation Review",
+        "year": "2026",
+        "doi": "10.31637/epsir-2026-2044",
+        "abstract": "This study examines the sustainable integration of artificial intelligence in human resource digitalization within the context of Industry 4.0, identifying key challenges and opportunities.",
+        "keywords": ["artificial intelligence", "human resources", "digitalization", "Industry 4.0", "sustainability"]
+    }
+]

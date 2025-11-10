@@ -1,0 +1,6 @@
+Flask
+openai-whisper
+pydub
+reportlab
+torch
+ffmpeg-python

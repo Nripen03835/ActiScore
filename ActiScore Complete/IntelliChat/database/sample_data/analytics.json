@@ -1,0 +1,14 @@
+[
+  {
+    "metric": "User Engagement",
+    "value": "78%",
+    "trend": "up",
+    "insights": "15% increase from last month due to new feature releases"
+  },
+  {
+    "metric": "Customer Acquisition Cost",
+    "value": "$45.20",
+    "trend": "down",
+    "insights": "Improved marketing efficiency reduced CAC by 8%"
+  }
+]

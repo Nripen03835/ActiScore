@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Edit Student Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="student_id" class="form-label">Student ID</label>
+                    <input type="text" class="form-control" id="student_id" name="student_id" value="{{ student.student_id }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Student</button>
+                <a href="{{ url_for('manage_students') }}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+flask
+numpy
+scikit-learn
+nltk
+reportlab
+python-dotenv
+PyPDF2
+pdfplumber
+python-magic

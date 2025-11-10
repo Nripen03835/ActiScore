@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}{{ team.name }} - ActiScore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('collaboration.teams') }}">Teams</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ team.name }}</li>
+        </ol>
+    </nav>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="h2 mb-4">{{ team.name }}</h1>
+            
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Shared Analyses</h5>
+                </div>
+                <div class="card-body">
+                    {% if analyses %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Owner</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for analysis in analyses %}
+                                <tr>
+                                    <td>
+                                        {% if analysis.analysis_type == 'FER' %}
+                                        <span class="badge bg-success">Facial</span>
+                                        {% elif analysis.analysis_type == 'SER' %}
+                                        <span class="badge bg-info">Speech</span>
+                                        {% else %}
+                                        <span class="badge bg-primary">Fusion</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ analysis.user.username }}</td>
+                                    <td>{{ analysis.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {% if analysis.analysis_type == 'FER' %}
+                                        <a href="{{ url_for('facial_analysis', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                                        {% elif analysis.analysis_type == 'SER' %}
+                                        <a href="{{ url_for('speech_analysis', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                                        {% else %}
+                                        <a href="{{ url_for('fusion_analysis', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-chart-bar fa-4x text-muted mb-3"></i>
+                        <p class="lead">No analyses have been shared with this team yet.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Team Members</h5>
+                    {% if is_admin %}
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#inviteModal">
+                        <i class="fas fa-user-plus me-1"></i> Invite
+                    </button>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for member in members %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="user-avatar me-3">
+                                    {{ member.username[0] }}
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">{{ member.username }}</h6>
+                                    <small class="text-muted">
+                                        {% if member.role == 'admin' %}
+                                        <span class="badge bg-primary">Admin</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary">Member</span>
+                                        {% endif %}
+                                    </small>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Invite Modal -->
+{% if is_admin %}
+<div class="modal fade" id="inviteModal" tabindex="-1" aria-labelledby="inviteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inviteModalLabel">Invite Team Member</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url_for('collaboration.invite_member', team_id=team.id) }}" method="POST">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="form-text">Enter the email address of the user you want to invite.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Invite User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

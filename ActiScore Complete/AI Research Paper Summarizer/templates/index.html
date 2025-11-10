@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Paper Recommender & Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Research Paper Recommender & Summarizer</h1>
+            <p>Upload research papers (PDF/TXT) or enter keywords to get summaries and recommendations</p>
+        </div>
+
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('history') }}" class="nav-link">Search History</a>
+            </div>
+        </nav>
+
+        <div class="alert" id="alert"></div>
+
+        <div class="card">
+            <h2>Summarize Research Paper</h2>
+            <form id="summarizeForm">
+                <div class="form-group">
+                    <label for="fileInput">Upload Research Paper:</label>
+                    <div class="file-input">
+                        <input type="file" id="fileInput" accept=".pdf,.txt">
+                        <label for="fileInput" class="file-input-label" id="fileInputLabel">
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">📄</div>
+                                <div class="upload-text">Click to upload or drag and drop</div>
+                                <div class="upload-hint">PDF or TXT files (Max 16MB)</div>
+                                <div class="file-types">
+                                    <div class="file-type">
+                                        <span class="file-type-badge">PDF</span>
+                                        <span>.pdf files</span>
+                                    </div>
+                                    <div class="file-type">
+                                        <span class="file-type-badge">TXT</span>
+                                        <span>.txt files</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="file-info" id="fileInfo">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-size" id="fileSize"></div>
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="file-type-hint">
+                        Supported formats: PDF (research papers, articles) and TXT (plain text)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Or Paste Text Content:</label>
+                    <textarea id="textInput" class="form-control textarea" placeholder="Paste your research paper content here..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-full">Generate Summary & Recommendations</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Get Paper Recommendations</h2>
+            <form id="recommendForm">
+                <div class="form-group">
+                    <label for="keywordsInput">Enter Research Topic or Keywords:</label>
+                    <input type="text" id="keywordsInput" class="form-control" placeholder="e.g., machine learning, deep learning, computer vision...">
+                </div>
+                
+                <button type="submit" class="btn btn-full btn-secondary">Find Similar Papers</button>
+            </form>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing your request...</p>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="card">
+                <h2>Analysis Results</h2>
+                <button id="downloadBtn" class="btn" style="display: none; margin-bottom: 20px;">Download as PDF</button>
+                
+                <div id="summary"></div>
+                <div id="contributions"></div>
+                <div id="similarPapers"></div>
+                <div id="recommendations"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

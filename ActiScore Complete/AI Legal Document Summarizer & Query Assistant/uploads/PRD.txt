@@ -1,0 +1,252 @@
+You are an expert full-stack AI developer.
+Build me a *complete AI-powered research and learning web platform* named *“IntelliLearn AI”* using *Flask (Python backend), **HTML, CSS, JavaScript (frontend), and a suitable **database (PostgreSQL or SQLite)*.
+
+The project should include *user authentication (login, logout, signup)* and multiple integrated AI features as separate modules within the same Flask project.
+
+---
+
+### 🧱 *Project Overview:*
+
+Develop a web application that integrates multiple AI modules for smart education, research assistance, and innovation analytics.
+The app must include:
+
+* Secure login and logout system (Flask-Login / JWT)
+* Dashboard after login with module cards
+* Each module accessible via navigation bar
+* Clean and responsive frontend using HTML, CSS (Bootstrap/Tailwind), and JS
+* Flask as backend with RESTful APIs
+
+---
+
+### 🧠 *Modules (Features to Implement):*
+
+#### 1. 👨‍🏫 AI Attendance and Emotion Monitoring
+
+* Use *OpenCV + DeepFace* for facial recognition and emotion detection via webcam.
+* Mark attendance automatically when a recognized face appears.
+* Save attendance records with timestamps in the database.
+* Display analytics (e.g., daily attendance rate, emotion distribution) on dashboard using charts.
+
+#### 2. 📚 AI Legal Document Summarizer & Query Assistant
+
+* Upload .txt or .pdf file.
+* Summarize text using *HuggingFace Transformers (T5/BART)*.
+* Allow users to type legal queries → return context-based answers using *semantic search (Sentence-BERT + FAISS)*.
+
+#### 3. 📄 AI Research Paper Recommender & Summarizer
+
+* User uploads research paper or keywords.
+* Generate summary, extract key contributions.
+* Recommend similar research papers using cosine similarity and vector embeddings.
+* Store and view previous recommendations.
+
+#### 4. 🎥 AI Video Summarizer (Lecture/Meeting)
+
+* Upload a lecture/meeting video.
+* Extract audio → convert to text using *Whisper*.
+* Summarize text to extract key points.
+* Display short summary + download option.
+
+#### 5. 📈 AI Startup Success Predictor
+
+* Input: industry, funding amount, founder experience, etc.
+* Output: probability of success, risk level, and insights.
+* Use *XGBoost / RandomForest* ML model trained on startup dataset.
+* Show trend visualization (charts, graphs).
+
+#### 6. 🔗 AI Knowledge Graph for Research
+
+* Visualize relationships between papers, authors, and keywords using *Neo4j or NetworkX*.
+* Users can search for topics → dynamically load graph visualization on web page.
+* Clicking a node shows details + summary of related research.
+
+#### 7. 💬 IntelliChat – Smart Chatbot Assistant
+
+* Central chatbot answering user queries related to all modules.
+* Use *RAG (Retrieval-Augmented Generation)* with FAISS or Pinecone.
+* It can access:
+
+  * Attendance data
+  * Summaries
+  * Startup analytics
+  * Research papers
+* Chat UI built with HTML/JS and backend with Flask API using OpenAI or local LLM.
+
+---
+
+### 🔐 *Authentication System*
+
+* Implement *Flask-Login* for session management.
+* Features:
+
+  * User registration (Name, Email, Password)
+  * Secure login/logout
+  * Password hashing (Werkzeug or bcrypt)
+  * Profile management page
+* Redirect unauthorized users to login page.
+* Logout clears session tokens.
+
+---
+
+### 🧩 *Database Schema (PostgreSQL or SQLite)*
+
+Tables:
+
+* users(id, name, email, password_hash, role)
+* attendance(id, user_id, date, time, emotion, status)
+* summaries(id, user_id, text, summary, timestamp)
+* videos(id, user_id, file_path, summary)
+* startups(id, user_id, features, success_probability)
+* papers(id, user_id, title, keywords, summary)
+* chat_history(id, user_id, query, response, timestamp)
+
+---
+
+### 🎨 *Frontend Design*
+
+* Use *HTML5 + CSS3 + Bootstrap 5 (or Tailwind)* for clean UI.
+* Navigation bar with dropdown for modules.
+* Dashboard with cards for:
+
+  * “Mark Attendance”
+  * “Summarize Documents”
+  * “Research Recommender”
+  * “Video Summarizer”
+  * “Startup Predictor”
+  * “Knowledge Graph”
+  * “AI Chatbot”
+* Use *Chart.js* or *Plotly.js* for visualizations.
+* Use *AJAX (Fetch API)* for dynamic responses without page reload.
+
+---
+
+### ☁ *Backend Integration*
+
+* Each AI module implemented as a separate Flask blueprint.
+* REST API routes:
+
+  
+  /api/attendance/mark
+  /api/emotion/detect
+  /api/legal/summarize
+  /api/research/recommend
+  /api/video/summarize
+  /api/startup/predict
+  /api/graph/data
+  /api/chat/query
+  
+* Return JSON responses.
+* Serve AI model inference asynchronously using Celery (optional for scaling).
+
+---
+
+### 💾 *Files & Folder Structure*
+
+
+intellilearn/
+│
+├── app.py
+├── config.py
+├── requirements.txt
+├── /models/
+│   ├── user.py
+│   ├── attendance.py
+│   └── summary.py
+├── /routes/
+│   ├── auth_routes.py
+│   ├── attendance_routes.py
+│   ├── summarizer_routes.py
+│   ├── research_routes.py
+│   ├── video_routes.py
+│   ├── startup_routes.py
+│   ├── graph_routes.py
+│   └── chatbot_routes.py
+├── /templates/
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── attendance.html
+│   ├── summarizer.html
+│   ├── research.html
+│   ├── video.html
+│   ├── startup.html
+│   ├── graph.html
+│   ├── chatbot.html
+│   └── base.html
+├── /static/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── uploads/
+└── /ai_models/
+    ├── summarizer_model/
+    ├── face_model/
+    ├── startup_model/
+    └── embeddings/
+
+
+---
+
+### 🧠 *Python Dependencies*
+
+
+flask
+flask-login
+flask_sqlalchemy
+werkzeug
+opencv-python
+deepface
+transformers
+sentence-transformers
+torch
+xgboost
+pandas
+numpy
+faiss-cpu
+neo4j
+whisper
+plotly
+chartjs
+
+
+---
+
+### 🧾 *Deliverables*
+
+* Flask-based running web app with modular structure.
+* Login/Logout system.
+* Each AI module accessible through dashboard.
+* Database integration for saving results.
+* Responsive UI with charts and summaries.
+* Integrated AI Chatbot across all modules.
+
+---
+
+### 🧭 *Final Step: Deployment*
+
+* Run app with:
+
+  bash
+  flask run
+  
+* Deploy on:
+
+  * *Render / Railway / Heroku* (for backend)
+  * *Vercel / Netlify* (for static frontend, if separated)
+  * Store data on PostgreSQL (Supabase or Neon.tech).
+
+---
+
+## ✅ *Output Expected*
+
+A *complete Flask-based AI web application* with:
+
+* Full login/logout system
+* Integrated AI modules
+* Modern UI (HTML/CSS/JS)
+* AI chatbot interface
+* Database-backed analytics
+
+---
+
+Would you like me to now generate the *exact Flask folder + code skeleton* (with ready-to-run login system, routes, and templates) for this project so you can start coding right away?
+I can generate it module by module.

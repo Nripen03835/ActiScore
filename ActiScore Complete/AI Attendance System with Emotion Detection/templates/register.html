@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Register New Student</h4>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form id="registrationForm" onsubmit="handleRegistrationForm(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student_id">Student ID</label>
+                        <input type="text" class="form-control" id="student_id" name="student_id" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Student Photo</label>
+                        <div class="camera-container" style="display: none;">
+                            <video id="camera-feed" autoplay playsinline width="100%"></video>
+                            <button type="button" id="capture-btn" class="btn btn-secondary mt-2">Capture Photo</button>
+                        </div>
+                        <canvas id="photo-canvas" style="display: none;"></canvas>
+                        <input type="hidden" id="photo-data" name="photo_data">
+                        
+                        <button type="button" id="start-camera-btn" class="btn btn-outline-primary w-100 mt-2">
+                            Open Camera
+                        </button>
+                        
+                        <small class="form-text text-muted">
+                            Take a clear photo of the student's face for better recognition.
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
+                        Register Student
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5>Registration Instructions</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li>✅ Ensure the student ID is unique</li>
+                    <li>✅ Use clear, well-lit photos for better recognition</li>
+                    <li>✅ Students will be automatically recognized during attendance</li>
+                    <li>✅ Emotion detection works automatically</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

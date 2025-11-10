@@ -1,0 +1,9 @@
+flask
+opencv-python
+deepface
+numpy
+pandas
+matplotlib
+sqlite3
+pillow
+wtforms

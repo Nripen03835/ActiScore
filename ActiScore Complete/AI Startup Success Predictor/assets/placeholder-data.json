@@ -1,0 +1,28 @@
+{
+  "industries": [
+    "Technology",
+    "Healthcare",
+    "Finance",
+    "E-commerce",
+    "Education",
+    "Other"
+  ],
+  "samplePredictions": [
+    {
+      "industry": "Technology",
+      "funding": 500000,
+      "experience": 5,
+      "teamSize": 8,
+      "marketSize": 8,
+      "competition": 6
+    },
+    {
+      "industry": "Healthcare",
+      "funding": 1000000,
+      "experience": 10,
+      "teamSize": 12,
+      "marketSize": 9,
+      "competition": 4
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ActiScore - Multimodal Emotion Analysis",
+  "short_name": "ActiScore",
+  "description": "AI-driven emotion recognition and analysis application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#4361ee",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "/static/images/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/static/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
